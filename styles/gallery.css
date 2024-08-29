@@ -1,0 +1,14 @@
+#gallery {
+  display: flex;
+}
+
+.gallery-col {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
+
+.gallery-img {
+  padding: .5rem;
+  object-fit: contain;
+}
