@@ -1,0 +1,122 @@
+/* Our default values set as CSS variables */
+:root {
+  --brand-dark: #1e1f20;
+  --brand-purple: #5b07bf;
+  --brand-pink: #ae005d;
+  --brand-orange: #e54935;
+  --brand-blue: #56adff;
+  --brand-yellow: #fbce53;
+  --brand-light: #ebfcfd
+}
+
+/* Light/dark modes */
+.light {
+  --color-bg: var(--brand-light);
+  --color-text: var(--brand-dark);
+  --color-primary: var(--brand-purple);
+  --color-accent: var(--brand-pink);
+  --color-warn: var(--brand-orange);
+}
+
+.dark {
+  --color-bg: var(--brand-dark);
+  --color-text: var(--brand-light);
+  --color-primary: var(--brand-yellow);
+  --color-accent: var(--brand-blue);
+  --color-warn: var(--brand-orange);
+}
+
+/* a minimalist set of CSS resets */
+
+/* default to border-box */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* adjust typography defaults */
+body {
+  margin: 1rem;
+  font-family: sans-serif;
+  line-height: 1.5;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+@media (min-width: 500px) {
+  .content {
+    max-width: 90%;
+    margin: auto;
+  }
+}
+
+@media (min-width: 1000px) {
+  .content {
+    max-width: 70%;
+  }
+}
+
+.wip {
+  border: thick solid var(--color-warn);
+  margin: 1rem 0;
+  padding: 0 1rem;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  text-align: center;
+  border-radius: 2rem;
+}
+
+/* images and videos max out at full width */
+img,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+/* show specific banner based on screen width */
+@media (max-width: 500px) {
+  .banner-wide {
+    display: none;
+  }
+}
+
+@media (min-width: 501px) {
+  .banner-narrow {
+    display: none;
+  }
+}
+
+h1 {
+  color: var(--color-primary);
+  font-size: 3em;
+  text-align: center;
+}
+
+h2,
+h3 {
+  color: var(--color-accent);
+}
+
+a:link,
+a:visited {
+  font-weight: bold;
+  color: var(--color-primary);
+  border: thin solid var(--color-primary);
+  border-radius: 2rem;
+  padding: 0 .5rem;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+@media (hover: hover) {
+    a:hover {
+    background: var(--color-primary);
+    color: var(--color-bg);
+  }
+}

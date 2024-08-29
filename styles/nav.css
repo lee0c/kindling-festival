@@ -1,0 +1,61 @@
+#top-nav {
+  position: sticky;
+  top: 0px;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  background: var(--color-bg);
+  border-bottom: thick solid var(--color-accent);
+}
+
+/* Hide the handedness toggle on small screens */
+@media (max-width: 500px) {
+  #alignment {
+    display: none;
+  }
+}
+
+.nav-item {
+  margin: 1rem 0.5rem;
+  padding: 0 0.5rem;
+  background: var(--color-bg);
+  border: thin solid var(--color-primary);
+  border-radius: 1rem;
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+    .nav-item:hover {
+    background: var(--color-primary);
+    color: var(--color-bg);
+  }
+}
+
+footer {
+  margin-top: 4rem;
+  border-top: solid thick var(--color-primary);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+footer p {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+footer a:link,
+footer a:visited {
+  color: var(--color-accent);
+  border: thin solid var(--color-accent);
+}
+
+@media (hover: hover) {
+  footer a:hover {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+}
