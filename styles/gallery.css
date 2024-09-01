@@ -9,6 +9,42 @@
 }
 
 .gallery-img {
-  padding: .5rem;
+  padding: 0.5rem;
   object-fit: contain;
+  cursor: pointer;
+}
+
+/* Modal */
+#gallery-modal {
+  width: 60%;
+  height: 95vh;
+  background-color: inherit;
+  max-block-size: min(90vh, 100%);
+  border: none;
+}
+
+#gallery-modal::backdrop {
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+  backdrop-filter: blur(25px);
+}
+
+@media screen and (max-width: 500px) {
+  #gallery-modal {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+#modal-img {
+  display: block;
+  max-height: 80%;
+  max-width: 90%;
+  margin: auto;
+}
+
+#modal-attribution,
+#modal-caption {
+  color: var(--brand-light);
+  text-align: center;
 }

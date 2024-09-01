@@ -1,27 +1,34 @@
 let navbar = document.getElementById("top-nav");
 
+/*********/
+/* THEME */
+/*********/
+
 /* theme consts */
 const THEME = "theme";
 const LIGHT = "light";
 const DARK = "dark";
 
-const LIGHT_ICON = '<i class="fa-regular fa-sun" aria-hidden="true"></i>';
-const DARK_ICON = '<i class="fa-regular fa-moon" aria-hidden="true"></i>';
+const THEME_ICON = '<i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>';
 
 /* Light/dark modes */
-let body = document.body;
-
 let theme = localStorage.getItem(THEME);
-let themeToggle = document.getElementById(THEME);
+
+let themeToggle = document.createElement("button");
+themeToggle.className = "nav-item";
+themeToggle.id = THEME;
+themeToggle.title = "toggle light/dark mode";
+themeToggle.ariaLabel = "toggle light/dark mode";
+themeToggle.innerHTML = THEME_ICON;
 
 function setThemeDark() {
-  body.className = DARK;
-  themeToggle.innerHTML = LIGHT_ICON;
+  document.body.classList.remove(LIGHT);
+  document.body.classList.add(DARK);
 }
 
 function setThemeLight() {
-  body.className = LIGHT;
-  themeToggle.innerHTML = DARK_ICON;
+  document.body.classList.remove(DARK);
+  document.body.classList.add(LIGHT);
 }
 
 function changeTheme(theme) {
@@ -29,21 +36,19 @@ function changeTheme(theme) {
     if (
       window.matchMedia &&
       window.matchMedia("(prefers-color-scheme: light)").matches
-    ) {
-      theme = LIGHT;
-    } else {
-      theme = DARK;
-    }
+    ) theme = LIGHT;
+    else theme = DARK;
   }
-
+  
   switch (theme) {
     case LIGHT:
       setThemeLight();
-      break;
+      break
     case DARK:
       setThemeDark();
       break;
   }
+  
   localStorage.setItem(THEME, theme);
 }
 
@@ -57,17 +62,25 @@ function toggleTheme() {
 
 themeToggle.addEventListener("click", toggleTheme);
 
+/*************/
+/* ALIGNMENT */
+/*************/
+
 /* menu orientation consts */
 const ALIGN = "alignment";
 const LEFT = "left";
 const RIGHT = "right";
 
-const LEFT_ICON = '<i class="fa-regular fa-hand-point-left"></i>';
-const RIGHT_ICON = '<i class="fa-regular fa-hand-point-right"></i>';
+const LEFT_ICON = '<i class="fa-regular fa-hand-point-left" aria-hidden="true"></i>';
+const RIGHT_ICON = '<i class="fa-regular fa-hand-point-right" aria-hidden="true"></i>';
 
 /* Menu alignment - right or left handed */
 let align = localStorage.getItem(ALIGN);
-let alignToggle = document.getElementById(ALIGN);
+let alignToggle = document.createElement("button");
+alignToggle.className = "nav-item";
+alignToggle.id = ALIGN;
+alignToggle.title = "toggle left/right navbar alignment";
+alignToggle.ariaLabel = "toggle left/right navbar alignment";
 
 function setAlignLeft() {
   alignToggle.innerHTML = RIGHT_ICON;
@@ -94,18 +107,26 @@ function changeAlign(align) {
       setAlignRight();
       break;
   }
+
   localStorage.setItem(ALIGN, align);
 }
 
 changeAlign(align);
 
-function toggleAlign() {
+function toggleAlign(event) {
   if (align === LEFT) align = RIGHT;
   else if (align === RIGHT) align = LEFT;
+
   changeAlign(align);
+  
+  if (event.detail === 0) alignToggle.focus();
 }
 
 alignToggle.addEventListener("click", toggleAlign);
+
+/**********/
+/* FOOTER */
+/**********/
 
 let footerHTML = `
   <p>
